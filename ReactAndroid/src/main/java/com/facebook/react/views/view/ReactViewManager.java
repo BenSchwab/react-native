@@ -9,11 +9,6 @@
 
 package com.facebook.react.views.view;
 
-import javax.annotation.Nullable;
-
-import java.util.Locale;
-import java.util.Map;
-
 import android.annotation.TargetApi;
 import android.graphics.Rect;
 import android.os.Build;
@@ -30,6 +25,11 @@ import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.react.uimanager.*;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.annotations.ReactPropGroup;
+
+import java.util.Locale;
+import java.util.Map;
+
+import javax.annotation.Nullable;
 
 /**
  * View manager for AndroidViews (plain React Views).
@@ -100,8 +100,7 @@ public class ReactViewManager extends ViewGroupManager<ReactViewGroup> {
 
   @ReactProp(name = "nativeBackgroundAndroid")
   public void setNativeBackground(ReactViewGroup view, @Nullable ReadableMap bg) {
-    view.setTranslucentBackgroundDrawable(bg == null ?
-            null : ReactDrawableHelper.createDrawableFromJSDescription(view.getContext(), bg));
+    view.setNativeBackground(bg);
   }
 
   @TargetApi(Build.VERSION_CODES.M)
